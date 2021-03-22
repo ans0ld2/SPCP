@@ -1,0 +1,2 @@
+VAIndicator.cpp:12:6:virtual void VA::Indicator::Show()	56	static
+VAIndicator.cpp:24:6:virtual void VA::Indicator::CallBack()	0	static

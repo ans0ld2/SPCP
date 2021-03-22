@@ -1,0 +1,7 @@
+main.c:135:6:SystemClock_Config	216	static
+main.c:73:5:main	8	static,ignoring_inline_asm
+main.c:198:6:HAL_UART_TxCpltCallback	0	static
+main.c:202:6:SPI_SetPol_LOW	0	static
+main.c:209:6:SPI_SetPol_HIGH	0	static
+main.c:226:6:HAL_TIM_PeriodElapsedCallback	0	static
+main.c:243:6:Error_Handler	0	static

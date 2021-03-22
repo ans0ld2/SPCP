@@ -1,0 +1,54 @@
+VAGeometric.cpp:45:16:const uint16_t VA::Point::getX() const	0	static
+VAGeometric.cpp:47:16:const uint16_t VA::Point::getY() const	0	static
+VAGeometric.cpp:20:1:VA::Point::Point(uint16_t, uint16_t)	0	static
+VAGeometric.cpp:26:1:VA::Point::Point(VA::Point&&)	0	static
+VAGeometric.cpp:29:15:const VA::Point& VA::Point::operator=(const VA::Point&)	0	static
+VAGeometric.cpp:37:15:const VA::Point& VA::Point::operator=(VA::Point&&)	0	static
+VAGeometric.cpp:49:6:void VA::Point::setX(uint16_t)	0	static
+VAGeometric.cpp:51:6:void VA::Point::setY(uint16_t)	0	static
+VAGeometric.cpp:57:1:VA::Rectangle::Rectangle(const VA::Point&, uint16_t, uint16_t, VA::Colors)	8	static
+VAGeometric.cpp:62:1:VA::Rectangle::Rectangle(VA::Rectangle&&)	4	static
+VAGeometric.cpp:67:1:VA::Rectangle::Rectangle(const VA::Rectangle&)	8	static
+VAGeometric.cpp:72:19:const VA::Rectangle& VA::Rectangle::operator=(const VA::Rectangle&)	8	static
+VAGeometric.cpp:82:19:const VA::Rectangle& VA::Rectangle::operator=(VA::Rectangle&&)	8	static
+VAGeometric.cpp:92:13:const VA::Point VA::Rectangle::getNullPoint() const	0	static
+VAGeometric.cpp:94:16:const uint16_t VA::Rectangle::getWidth() const	0	static
+VAGeometric.cpp:96:16:const uint16_t VA::Rectangle::getHeight() const	0	static
+VAGeometric.cpp:98:13:const VA::Point VA::Rectangle::getCenter() const	12	static
+VAGeometric.cpp:103:16:const uint16_t VA::Rectangle::getCenterW() const	0	static
+VAGeometric.cpp:108:16:const uint16_t VA::Rectangle::getCenterH() const	0	static
+VAGeometric.cpp:113:14:const VA::Colors VA::Rectangle::getColor() const	0	static
+VAGeometric.cpp:115:6:void VA::Rectangle::setNullPoint(const VA::Point&)	0	static
+VAGeometric.cpp:117:6:void VA::Rectangle::setWidth(uint16_t)	0	static
+VAGeometric.cpp:119:6:void VA::Rectangle::setHeight(uint16_t)	0	static
+VAGeometric.cpp:121:6:void VA::Rectangle::setColor(VA::Colors)	0	static
+VAGeometric.cpp:127:13:const VA::Point VA::Ellipse::calcNullPoint(const VA::Point&, uint16_t, uint16_t)	8	static
+VAGeometric.cpp:137:1:VA::Ellipse::Ellipse(const VA::Point&, uint16_t, uint16_t, VA::Colors)	8	static
+VAGeometric.cpp:142:1:VA::Ellipse::Ellipse(const VA::Rectangle&)	8	static
+VAGeometric.cpp:145:1:VA::Ellipse::Ellipse(VA::Rectangle&&)	4	static
+VAGeometric.cpp:148:6:void VA::Ellipse::setCenter(const VA::Point&)	4	static
+VAGeometric.cpp:157:1:VA::Curve::Curve(const VA::Point&, uint16_t, uint16_t, VA::Curve::Mode, VA::Colors)	8	static
+VAGeometric.cpp:164:1:VA::Curve::Curve(const VA::Curve&)	8	static
+VAGeometric.cpp:167:1:VA::Curve::Curve(VA::Curve&&)	4	static
+VAGeometric.cpp:170:1:VA::Curve::Curve(const VA::Rectangle&, VA::Curve::Mode)	8	static
+VAGeometric.cpp:176:1:VA::Curve::Curve(VA::Rectangle&&, VA::Curve::Mode)	4	static
+VAGeometric.cpp:182:19:const VA::Curve::Mode VA::Curve::getMode() const	0	static
+VAGeometric.cpp:184:6:void VA::Curve::setMode(VA::Curve::Mode)	0	static
+VAGeometric.cpp:196:1:VA::RoundRect::RoundRect(const VA::Point&, uint16_t, uint16_t, uint16_t, VA::Colors)	8	static
+VAGeometric.cpp:203:1:VA::RoundRect::RoundRect(const VA::RoundRect&)	8	static
+VAGeometric.cpp:206:1:VA::RoundRect::RoundRect(VA::RoundRect&&)	4	static
+VAGeometric.cpp:209:1:VA::RoundRect::RoundRect(const VA::Rectangle&, uint16_t)	12	static
+VAGeometric.cpp:215:1:VA::RoundRect::RoundRect(VA::Rectangle&&, uint16_t)	4	static
+VAGeometric.cpp:221:16:const uint16_t VA::RoundRect::getRadius() const	0	static
+VAGeometric.cpp:226:6:void VA::RoundRect::setRadius(uint16_t)	0	static
+VAGeometric.cpp:237:13:const VA::Point VA::Triangle::calcNullPoint(const std::vector<VA::Point>&) const	8	static
+VAGeometric.cpp:254:12:const void VA::Triangle::update()	24	static
+VAGeometric.cpp:261:16:const uint16_t VA::Triangle::calcWorH(const VA::Point&, const std::vector<VA::Point>&, const uint16_t (VA::Point::*)() const) const	32	static
+VAGeometric.cpp:276:1:VA::Triangle::Triangle(const std::vector<VA::Point>&, VA::Colors)	24	static
+VAGeometric.cpp:287:1:VA::Triangle::Triangle(const VA::Point&, const VA::Point&, const VA::Point&, VA::Colors)	48	static
+VAGeometric.cpp:291:1:VA::Triangle::Triangle(const VA::Point*, VA::Colors)	24	static
+VAGeometric.cpp:295:1:VA::Triangle::Triangle(const VA::Triangle&)	24	static
+VAGeometric.cpp:299:1:VA::Triangle::Triangle(VA::Triangle&&)	0	static
+VAGeometric.cpp:302:13:const VA::Point VA::Triangle::operator[](uint16_t) const	0	static
+VAGeometric.cpp:311:13:const VA::Point VA::Triangle::setPoint(uint16_t, const VA::Point&)	16	static
+VAGeometric.cpp:325:28:const std::vector<VA::Point>& VA::Triangle::getPoints()	0	static

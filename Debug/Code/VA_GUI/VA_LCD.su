@@ -1,0 +1,7 @@
+VA_LCD.cpp:24:6:virtual void VA::LCD::setLayer(VA::LCD::layers)	0	static
+VA_LCD.cpp:12:1:VA::LCD::LCD(uint16_t, uint16_t)	8	static
+VA_LCD.cpp:16:1:VA::LCD::~LCD()	0	static
+VA_LCD.cpp:16:1:virtual VA::LCD::~LCD()	8	static
+VA_LCD.cpp:19:16:const uint16_t VA::LCD::getWigth() const	0	static
+VA_LCD.cpp:20:16:const uint16_t VA::LCD::getHeight() const	0	static
+VA_LCD.cpp:22:19:const VA::LCD::layers VA::LCD::getLayer() const	0	static

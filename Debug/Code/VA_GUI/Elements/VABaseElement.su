@@ -1,0 +1,26 @@
+VABaseElement.h:81:15:virtual void VA::BaseElement::Show()	0	static
+VABaseElement.cpp:44:6:virtual void VA::BaseElement::CallBack()	16	static
+VABaseElement.cpp:49:6:bool VA::BaseElement::isIam(uint16_t, uint16_t)	16	static
+VABaseElement.cpp:58:6:bool VA::BaseElement::Push(uint16_t, uint16_t, bool)	24	static
+VABaseElement.cpp:82:10:uint16_t VA::BaseElement::GetX()	0	static
+VABaseElement.cpp:85:10:uint16_t VA::BaseElement::GetY()	0	static
+VABaseElement.cpp:88:10:uint16_t VA::BaseElement::GetW()	0	static
+VABaseElement.cpp:92:10:uint16_t VA::BaseElement::GetH()	0	static
+VABaseElement.cpp:96:10:uint16_t VA::BaseElement::GetCenterX()	0	static
+VABaseElement.cpp:100:10:uint16_t VA::BaseElement::GetCenterY()	0	static
+VABaseElement.cpp:104:6:void VA::BaseElement::Move(int16_t, int16_t)	32	static
+VABaseElement.cpp:110:6:void VA::BaseElement::GetCenter(uint16_t&, uint16_t&)	16	static
+VABaseElement.cpp:115:6:void VA::BaseElement::SetPosition(uint16_t, uint16_t)	24	static
+VABaseElement.cpp:141:6:void VA::BaseElement::SetSize(uint16_t, uint16_t)	32	static
+VABaseElement.cpp:169:6:void VA::BaseElement::SetShowed(bool)	0	static
+VABaseElement.cpp:172:6:bool VA::BaseElement::isShowed()	0	static
+VABaseElement.cpp:176:6:void VA::BaseElement::SetLevelAcces(VA::LevelsAcces)	0	static
+VABaseElement.cpp:183:6:bool VA::BaseElement::CheckLevelAcces(VA::LevelsAcces)	0	static
+VABaseElement.cpp:187:6:bool VA::BaseElement::isClamped()	0	static
+VABaseElement.cpp:191:6:bool VA::BaseElement::isEnabled()	0	static
+VABaseElement.cpp:194:6:void VA::BaseElement::SetEnabled(bool)	0	static
+stl_vector.h:433:7:std::vector<_Tp, _Alloc>::~vector() [with _Tp = std::function<void()>; _Alloc = std::allocator<std::function<void()> >]	16	static
+VABaseElement.cpp:16:1:VA::BaseElement::BaseElement(uint16_t, uint16_t, uint16_t, uint16_t)	40	static
+VABaseElement.cpp:35:1:VA::BaseElement::BaseElement(VA::Canvas*, uint16_t, uint16_t, uint16_t, uint16_t)	40	static
+VABaseElement.cpp:21:1:VA::BaseElement::BaseElement(std::nullptr_t, uint16_t, uint16_t, uint16_t, uint16_t)	40	static
+VABaseElement.cpp:27:1:VA::BaseElement::BaseElement(VA::BaseScreen*, uint16_t, uint16_t, uint16_t, uint16_t)	48	static

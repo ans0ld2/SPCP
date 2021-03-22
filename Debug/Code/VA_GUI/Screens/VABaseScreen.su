@@ -1,0 +1,11 @@
+VABaseScreen.h:43:15:virtual void VA::BaseScreen::Loop()	0	static
+VABaseScreen.h:46:15:virtual bool VA::BaseScreen::JumpFrom()	0	static
+VABaseScreen.h:49:15:virtual void VA::BaseScreen::JumpTo()	0	static
+VABaseScreen.cpp:25:6:void VA::BaseScreen::delElement(VA::BaseElement*)	12	static
+VABaseScreen.cpp:21:6:void VA::BaseScreen::addElement(VA::BaseElement*)	32	static
+VABaseScreen.cpp:34:6:void VA::BaseScreen::delElement(VA::Canvas*)	16	static
+VABaseScreen.cpp:41:13:std::__cxx11::string VA::BaseScreen::GetName()	24	static
+vector.tcc:394:7:) [with _Args = {VA::BaseElement* const&}; _Tp = VA::BaseElement*; _Alloc = std::allocator<VA::BaseElement*>]	48	static
+VABaseScreen.cpp:28:6:void VA::BaseScreen::addElement(VA::Canvas*)	32	static
+vector.tcc:394:7:) [with _Args = {VA::BaseScreen*}; _Tp = VA::BaseScreen*; _Alloc = std::allocator<VA::BaseScreen*>]	48	static
+VABaseScreen.cpp:13:1:VA::BaseScreen::BaseScreen(VA::GUI*, std::__cxx11::string)	32	static
