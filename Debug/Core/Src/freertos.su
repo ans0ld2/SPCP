@@ -1,6 +1,7 @@
-freertos.c:258:13:SleepTFT	0	static
-freertos.c:192:13:ShowDefault	8	static
-freertos.c:246:13:EEPROMTask	8	static
-freertos.c:210:13:LoopTask	8	static
-freertos.c:228:13:ExchangeTask	8	static
-freertos.c:130:6:MX_FREERTOS_Init	8	static
+freertos.c:270:13:SleepTFT	0	static
+freertos.c:204:13:ShowDefault	8	static
+freertos.c:278:13:InsulDelay	0	static
+freertos.c:222:13:LoopTask	8	static
+freertos.c:240:13:ExchangeTask	8	static
+freertos.c:258:13:EEPROMTask	8	static
+freertos.c:139:6:MX_FREERTOS_Init	8	static

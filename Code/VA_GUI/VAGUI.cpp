@@ -108,7 +108,8 @@ void GUI::JumpScreen(uint16_t index) {
 	}
 }
 void GUI::JumpScreen(BaseScreen* ptr) {
-	uint16_t pos = std::distance(this->Screens.cbegin(), std::find(this->Screens.cbegin(), this->Screens.cend(), ptr));
+	uint16_t pos = std::distance(this->Screens.cbegin(), std::find(this->Screens.cbegin(),
+			this->Screens.cend(), ptr));
 	this->JumpScreen(pos);
 }
 

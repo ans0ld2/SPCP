@@ -27,7 +27,7 @@ class ScreenSetBKI : public BaseScreen {
 	Label label[4] = {
 		Label(this, 75, 110, 350, 65, "Количество фидеров, шт.", Fonts::TimesNewRoman, FontForms::Normal,
 			VALabelScale::S2, VALabelAlignX::Left, VALabelAlignY::CenterY),
-		Label(this, 75, 170, 350, 65, "Колибровочній коэф-т", Fonts::TimesNewRoman, FontForms::Normal,
+		Label(this, 75, 170, 350, 65, "Калибровочный коэф-т", Fonts::TimesNewRoman, FontForms::Normal,
 			VALabelScale::S2, VALabelAlignX::Left, VALabelAlignY::CenterY),
 		Label(this, 75, 230, 350, 65, "Rиз (предупред), кОм", Fonts::TimesNewRoman, FontForms::Normal,
 			VALabelScale::S2, VALabelAlignX::Left, VALabelAlignY::CenterY),
@@ -46,7 +46,7 @@ class ScreenSetBKI : public BaseScreen {
 
 public:
 
-	ScreenSetBKI(void) : BaseScreen(&Screens, "Параметры БКИ: ") {
+	ScreenSetBKI(void) : BaseScreen(&Screens, "Параметры БКИ") {
 		this->disp[0].addCallBack([&]() {
 			this->_write(148, *this->disp[0].GetPValue());
 		});
@@ -65,6 +65,8 @@ public:
 //		if(Memory[eMemory::warnInsulation].U <= BKI.Mem.LevelR) {
 //			Memory[eMemory::warnInsulation].U = BKI.Mem.LevelR + 10;
 //		}
+
+
 	}
 
 	void JumpTo(void) override {

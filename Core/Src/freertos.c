@@ -108,6 +108,14 @@ const osTimerAttr_t sleepTimer_attributes = {
   .cb_mem = &sleepTimerControlBlock,
   .cb_size = sizeof(sleepTimerControlBlock),
 };
+/* Definitions for insulTimer */
+osTimerId_t insulTimerHandle;
+osStaticTimerDef_t insulTimerControlBlock;
+const osTimerAttr_t insulTimer_attributes = {
+  .name = "insulTimer",
+  .cb_mem = &insulTimerControlBlock,
+  .cb_size = sizeof(insulTimerControlBlock),
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -119,6 +127,7 @@ void LoopTask(void *argument);
 void ExchangeTask(void *argument);
 void EEPROMTask(void *argument);
 void SleepTFT(void *argument);
+void InsulDelay(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -143,6 +152,9 @@ void MX_FREERTOS_Init(void) {
   /* Create the timer(s) */
   /* creation of sleepTimer */
   sleepTimerHandle = osTimerNew(SleepTFT, osTimerOnce, NULL, &sleepTimer_attributes);
+
+  /* creation of insulTimer */
+  insulTimerHandle = osTimerNew(InsulDelay, osTimerOnce, NULL, &insulTimer_attributes);
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
@@ -260,6 +272,14 @@ __weak void SleepTFT(void *argument)
   /* USER CODE BEGIN SleepTFT */
 
   /* USER CODE END SleepTFT */
+}
+
+/* InsulDelay function */
+__weak void InsulDelay(void *argument)
+{
+  /* USER CODE BEGIN InsulDelay */
+
+  /* USER CODE END InsulDelay */
 }
 
 /* Private application code --------------------------------------------------*/

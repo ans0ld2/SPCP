@@ -267,20 +267,31 @@ void LoopTask(void *argument) {
 			}
 			else sCrash.delCrash(NumberCrash::CrashI7);
 
-			if(!BKI.ErrorConnection) {
-				if((BKI.Mem.R1Minus < Memory[eMemory::warnInsulation].U || BKI.Mem.R1Minus < Memory[eMemory::warnInsulation].U)
-						&& Memory[eMemory::warnInsulation].U != 0 ){
-					sCrash.addCrash(NumberCrash::WarnInsul);
-					state = false;
-					errWarn = true;
-				}
-				else sCrash.delCrash(NumberCrash::WarnInsul);
+			if(HAL_GPIO_ReadPin(IN2_GPIO_Port, IN2_Pin)){
+				uint16_t ins_time = 30000;
+				osTimerStart(insulTimerHandle, ins_time);
+			}
 
-				if(HAL_GPIO_ReadPin(IN1_GPIO_Port,IN1_Pin)) {
-					sCrash.addCrash(NumberCrash::CrashInsul);
-					state = false;
+			if(!BKI.ErrorConnection) {
+				if(osTimerIsRunning(insulTimerHandle) == 0){
+					if((BKI.Mem.R1Minus < (Memory[eMemory::warnInsulation].U*10) || BKI.Mem.R1Plus < (Memory[eMemory::warnInsulation].U*10))
+							&& Memory[eMemory::warnInsulation].U != 0 ){
+						sCrash.addCrash(NumberCrash::WarnInsul);
+						state = false;
+						errWarn = true;
+					}
+					else sCrash.delCrash(NumberCrash::WarnInsul);
+
+					if(HAL_GPIO_ReadPin(IN1_GPIO_Port,IN1_Pin)) {
+						sCrash.addCrash(NumberCrash::CrashInsul);
+						state = false;
+					}
+					else sCrash.delCrash(NumberCrash::CrashInsul);
 				}
-				else sCrash.delCrash(NumberCrash::CrashInsul);
+				else {
+					sCrash.delCrash(NumberCrash::WarnInsul);
+					sCrash.delCrash(NumberCrash::CrashInsul);
+				}
 			}
 			else {
 				sCrash.delCrash(NumberCrash::WarnInsul);

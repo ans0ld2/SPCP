@@ -44,12 +44,12 @@ public:
 	Display disp[8] 			= {
 		 Display(this, 415, 145, 100, 40, &Memory[eMemory::MaxVoltageRecharge].U, 4, 1, min, max, &Screens.kbr),
 		 Display(this, 415, 235, 100, 40, &Memory[eMemory::MinVoltageRecharge].U, 4, 1, min, max, &Screens.kbr),
-		 Display(this, 665, 145, 100, 40, &Memory[eMemory::MaxCurrentRecharge].U, 4, 1, min, max, &Screens.kbr),
-		 Display(this, 665, 235, 100, 40, &Memory[eMemory::MinCurrentRecharge].U, 4, 1, min, max, &Screens.kbr),
+		 Display(this, 665, 145, 100, 40, &Memory[eMemory::MaxCurrentRecharge].U, 4, 1, 0, 1100, &Screens.kbr),
+		 Display(this, 665, 235, 100, 40, &Memory[eMemory::MinCurrentRecharge].U, 4, 1, 0, 1100, &Screens.kbr),
 		 Display(this, 415, 285, 100, 40, &Memory[eMemory::MaxVoltageBoostCharge].U, 4, 1, min, max, &Screens.kbr),
 		 Display(this, 415, 375, 100, 40, &Memory[eMemory::MinVoltageBoostCharge].U, 4, 1, min, max, &Screens.kbr),
-		 Display(this, 665, 285, 100, 40, &Memory[eMemory::MaxCurrentBoostCharge].U, 4, 1, min, max, &Screens.kbr),
-		 Display(this, 665, 375, 100, 40, &Memory[eMemory::MinCurrentBoostCharge].U, 4, 1, min, max, &Screens.kbr),
+		 Display(this, 665, 285, 100, 40, &Memory[eMemory::MaxCurrentBoostCharge].U, 4, 1, 0, 1100, &Screens.kbr),
+		 Display(this, 665, 375, 100, 40, &Memory[eMemory::MinCurrentBoostCharge].U, 4, 1, 0, 1100, &Screens.kbr),
 	};
 
 /*----------------------------------------------------------------------------------------------------- */

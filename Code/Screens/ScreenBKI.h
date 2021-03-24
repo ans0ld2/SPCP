@@ -73,7 +73,7 @@ class ScreenBKI : public BaseScreen {
 
 		Display(this, 440, 126, 100,50,  &BKI.Mem.U1Dop, 4, 1, 0, 1000, nullptr),
 		Display(this, 440, 242, 100,50, &BKI.Mem.R1Minus, 4, 1, 0, 1000, nullptr),
-		Display(this, 440, 357, 100,50,  &BKI.Mem.U1Plus, 4, 1, 0, 1000, nullptr)
+		Display(this, 440, 357, 100,50,  &BKI.Mem.U1Minus, 4, 1, 0, 1000, nullptr)
 	};
 
 /*-----------------------Дисплеии вывода значения сопротивления Полюсов------------------------------------------------------------------*/

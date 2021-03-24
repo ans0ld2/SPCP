@@ -12,7 +12,7 @@ std::string ListEvent[100] = {};
 void EventInit(void) {
 	ListEvent[NumberCrash::PanelOn] = "Панель включена";
 	ListEvent[10] = "Обрыв связи: ";
-	ListEvent[11] = "Связь востановленна: ";
+	ListEvent[11] = "Связь восстановлена: ";
 	ListEvent[12] = "Неисправность: ";
 	ListEvent[21] = "Неисправность батареи";
 	ListEvent[31] = "Неисправность БКИ";
@@ -22,7 +22,7 @@ void EventInit(void) {
 	ListEvent[43] = "Авария O3";
 	ListEvent[44] = "Напряжение ECI не в норме";
 	ListEvent[45] = "Напряжение ECII не в норме";
-	ListEvent[46] = "Напряжение AB не в норме";
+	ListEvent[46] = "Напряжение AБ не в норме";
 	ListEvent[47] = "Авария O7";
 
 	ListEvent[48] = "Отсутствие напряжения на вводе";
@@ -36,5 +36,5 @@ void EventInit(void) {
 	ListEvent[55] = "Rиз < ";
 	ListEvent[56] = "Напряжение ECI не в норме(пред.)";
 	ListEvent[57] = "Напряжение ECII не в норме(пред.)";
-	ListEvent[58] = "Напряжение AB не в норме(пред.)";
+	ListEvent[58] = "Напряжение AБ не в норме(пред.)";
 }

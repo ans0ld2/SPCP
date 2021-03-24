@@ -93,8 +93,8 @@ all: main-build
 main-build: SensorPanelPK_DebagPK.elf secondary-outputs
 
 # Tool invocations
-SensorPanelPK_DebagPK.elf: $(OBJS) $(USER_OBJS) D:\SensorPanelPK_DebagPK\ B130\SensorPanelPK_DebagPK\STM32F746ZETX_FLASH.ld
-	arm-none-eabi-g++ -o "SensorPanelPK_DebagPK.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\SensorPanelPK_DebagPK B130\SensorPanelPK_DebagPK\STM32F746ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SensorPanelPK_DebagPK.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+SensorPanelPK_DebagPK.elf: $(OBJS) $(USER_OBJS) D:\SPCP\SPCP\STM32F746ZETX_FLASH.ld
+	arm-none-eabi-g++ -o "SensorPanelPK_DebagPK.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\SPCP\SPCP\STM32F746ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SensorPanelPK_DebagPK.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

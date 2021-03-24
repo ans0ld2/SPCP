@@ -99,7 +99,7 @@ public:
 	uint32_t Min = 3; 						// количество фидеров на экране
 	uint32_t counter = 3; 			 		// номер фидера
 
-	ScreenContrlInsulation(void) : BaseScreen(&Screens, "Блок контроля изоляции: ") {
+	ScreenContrlInsulation(void) : BaseScreen(&Screens, "Блок контроля изоляции") {
 		this->left.addCallBack([&]() {
 			if(this->counter >= this->Min + 3) {
 				this->counter -= 3;
