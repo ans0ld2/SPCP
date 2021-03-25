@@ -75,6 +75,7 @@ extern osMessageQueueId_t EEPBufHandle;
 
 extern osTimerId_t sleepTimerHandle;
 extern osTimerId_t insulTimerHandle;
+extern osTimerId_t handMeasTIMHandle;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

@@ -21,7 +21,7 @@ extern DeviceB118 B118[2];
 
 class ScreenZVU : public BaseScreen {
 
-	const std::vector<std::string> labelZVU = {"ЕSI","ESII"};
+	const std::vector<std::string> labelZVU = {"ЕCI","ECII"};
 
 	class WindowPusk : public BaseWindow {
 

@@ -116,6 +116,14 @@ const osTimerAttr_t insulTimer_attributes = {
   .cb_mem = &insulTimerControlBlock,
   .cb_size = sizeof(insulTimerControlBlock),
 };
+/* Definitions for handMeasTIM */
+osTimerId_t handMeasTIMHandle;
+osStaticTimerDef_t handMeasTIMControlBlock;
+const osTimerAttr_t handMeasTIM_attributes = {
+  .name = "handMeasTIM",
+  .cb_mem = &handMeasTIMControlBlock,
+  .cb_size = sizeof(handMeasTIMControlBlock),
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -128,6 +136,7 @@ void ExchangeTask(void *argument);
 void EEPROMTask(void *argument);
 void SleepTFT(void *argument);
 void InsulDelay(void *argument);
+void handMeasDelay(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -155,6 +164,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of insulTimer */
   insulTimerHandle = osTimerNew(InsulDelay, osTimerOnce, NULL, &insulTimer_attributes);
+
+  /* creation of handMeasTIM */
+  handMeasTIMHandle = osTimerNew(handMeasDelay, osTimerOnce, NULL, &handMeasTIM_attributes);
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
@@ -280,6 +292,14 @@ __weak void InsulDelay(void *argument)
   /* USER CODE BEGIN InsulDelay */
 
   /* USER CODE END InsulDelay */
+}
+
+/* handMeasDelay function */
+__weak void handMeasDelay(void *argument)
+{
+  /* USER CODE BEGIN handMeasDelay */
+
+  /* USER CODE END handMeasDelay */
 }
 
 /* Private application code --------------------------------------------------*/

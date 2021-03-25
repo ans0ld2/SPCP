@@ -25,6 +25,7 @@ uint16_t Buf[4000] = {};
 
 bool CrashBattery = true;
 bool exch = false;
+//bool handMeas = false;
 
 using namespace VA;
 
@@ -144,6 +145,7 @@ void LoopTask(void *argument) {
 		bool errWarn = false;	// предупредительная авария
 		bool errZVU = false;
 
+
 		for(uint16_t i = 0; i < BaseDevice::Devices.size(); i++) {
 			if(BaseDevice::Devices[i]->ErrorConnection) {
 				sCrash.addCrash((NumberCrash)(11 + i));
@@ -171,9 +173,22 @@ void LoopTask(void *argument) {
 		}
 		else sCrash.delCrash(NumberCrash::BatteryCrash);
 
+		// --------------------- Задержка на измерение БКИ ----------------
+		if(HAL_GPIO_ReadPin(IN2_GPIO_Port, IN2_Pin)){
+			osTimerStart(insulTimerHandle, 30000);
+		}
+
+		if((osTimerIsRunning(insulTimerHandle) == 1) || HAL_GPIO_ReadPin(IN2_GPIO_Port, IN2_Pin)){
+			BKI.Enable = false;
+			osTimerStart(handMeasTIMHandle, 10000);
+		}
+		else {
+			BKI.Enable = true;
+		}
+
 		if (exch) {
 			uint16_t* status = (uint16_t*)&AnalogBl.Mem.sAnalogIO;
-			if((*status) & (1 << (0))){
+			if(((*status) & (1 << (0)) || (HAL_GPIO_ReadPin(OUT1_GPIO_Port, OUT1_Pin)))){
 				sCrash.addCrash(NumberCrash::CrashO1);
 				state = false;
 			}
@@ -194,27 +209,29 @@ void LoopTask(void *argument) {
 	//		else {
 	//			sCrash.delCrash(NumberCrash::CrashO3);
 	//		}
-			if((*status) & (1 << (3))){
+
+			if((*status) & (1 << (4))){
 				sCrash.addCrash(NumberCrash::CrashO4);
 				state = false;
 			}
 			else {
 				sCrash.delCrash(NumberCrash::CrashO4);
 			}
-			if((*status) & (1 << (4))){
+			if((*status) & (1 << (5))){
 				sCrash.addCrash(NumberCrash::CrashO5);
 				state = false;
 			}
 			else {
 				sCrash.delCrash(NumberCrash::CrashO5);
 			}
-			if((*status) & (1 << (5))){
+			if((*status) & (1 << (6))){
 				sCrash.addCrash(NumberCrash::CrashO6);
 				state = false;
 			}
 			else {
 				sCrash.delCrash(NumberCrash::CrashO6);
 			}
+
 	//		if((*status) & (1 << (6))){
 	//			sCrash.addCrash(NumberCrash::CrashO7);
 	//			state = false;
@@ -267,14 +284,13 @@ void LoopTask(void *argument) {
 			}
 			else sCrash.delCrash(NumberCrash::CrashI7);
 
-			if(HAL_GPIO_ReadPin(IN2_GPIO_Port, IN2_Pin)){
-				uint16_t ins_time = 30000;
-				osTimerStart(insulTimerHandle, ins_time);
-			}
 
 			if(!BKI.ErrorConnection) {
-				if(osTimerIsRunning(insulTimerHandle) == 0){
-					if((BKI.Mem.R1Minus < (Memory[eMemory::warnInsulation].U*10) || BKI.Mem.R1Plus < (Memory[eMemory::warnInsulation].U*10))
+				if((osTimerIsRunning(insulTimerHandle) == 0)
+						&& !HAL_GPIO_ReadPin(IN2_GPIO_Port, IN2_Pin)
+						&& (osTimerIsRunning(handMeasTIMHandle) == 0)){
+					if((BKI.Mem.R1Minus < (Memory[eMemory::warnInsulation].U*10)
+							|| BKI.Mem.R1Plus < (Memory[eMemory::warnInsulation].U*10))
 							&& Memory[eMemory::warnInsulation].U != 0 ){
 						sCrash.addCrash(NumberCrash::WarnInsul);
 						state = false;
@@ -285,7 +301,9 @@ void LoopTask(void *argument) {
 					if(HAL_GPIO_ReadPin(IN1_GPIO_Port,IN1_Pin)) {
 						sCrash.addCrash(NumberCrash::CrashInsul);
 						state = false;
+						errWarn = true;
 					}
+
 					else sCrash.delCrash(NumberCrash::CrashInsul);
 				}
 				else {
@@ -362,9 +380,11 @@ void LoopTask(void *argument) {
 			}
 		}
 		Global.indCrash.state = state;
-		if (HAL_GPIO_ReadPin(IN1_GPIO_Port,IN1_Pin) || !HAL_GPIO_ReadPin(OUT2_GPIO_Port,OUT2_Pin)){
+
+		if (!HAL_GPIO_ReadPin(OUT2_GPIO_Port,OUT2_Pin)){
 			errWarn = true;
 		}
+
 
 
 		HAL_GPIO_WritePin(OUT1_GPIO_Port, OUT1_Pin, errWarn ? GPIO_PIN_SET : GPIO_PIN_RESET);	//Предупредительная авария
@@ -408,6 +428,7 @@ void ExchangeTask(void *argument) {
 			}
 		}
 		exch = true;
+
 		WriteBuf_t temp;
 		for(uint16_t n = 0; n < 2; n++) {
 			if(B118[n].Enable && !B118[n].ErrorConnection) {
@@ -426,25 +447,22 @@ void ExchangeTask(void *argument) {
 			}
 		}
 
-	uint64_t* ptr = (uint64_t*)&DCXJ.Mem.sCellBattery;
-	CrashBattery = true;
-	for(uint16_t i = 0; i < 60; i++) {
-		if(DCXJ.Enable && DCXJ.ErrorConnection == false) {
-			if(i >= sBatteryControl.Max) break;
-			if (Memory[eMemory::SettingBatteryDCXJ].U != 0){
-				if(abs((int)(Memory[eMemory::SettingBatteryDCXJ].U - DCXJ.Mem.cellVoltage[i]))
-					> Memory[eMemory::ToleranceBatteryDCXJ].U) {
-				(*ptr) &= ~(1 << i);
-				CrashBattery = false;
-				}
-				else {
-					(*ptr) |= (1 << i);
+		uint64_t* ptr = (uint64_t*)&DCXJ.Mem.sCellBattery;
+		CrashBattery = true;
+		for(uint16_t i = 0; i < 60; i++) {
+			if(DCXJ.Enable && DCXJ.ErrorConnection == false) {
+				if(i >= sBatteryControl.Max) break;
+				if (Memory[eMemory::SettingBatteryDCXJ].U != 0){
+					if(abs((int)(Memory[eMemory::SettingBatteryDCXJ].U - DCXJ.Mem.cellVoltage[i]))
+						> Memory[eMemory::ToleranceBatteryDCXJ].U) {
+						(*ptr) &= ~(1 << i);
+						CrashBattery = false;
+					}
+					else (*ptr) |= (1 << i);
 				}
 			}
-
+			else break;
 		}
-		else break;
-	}
 
 		while(osMessageQueueGetCount(WriteBufHandle)) {
 			osMessageQueueGet(WriteBufHandle, &temp, NULL, 5);

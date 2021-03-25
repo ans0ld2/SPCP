@@ -73,8 +73,8 @@ void Display::SetValue(uint16_t pvalue) {
 std::string Display::ValueConvert(uint16_t value) {
 	std::string temp;
 	if(this->_signed) {
-		uint16_t _value = value&0x7fff;
-			temp = std::to_string(_value);
+		int16_t _value = *(int16_t*)&value;
+			temp = std::to_string(abs(_value));
 		for(int i = 0; temp.length()  <= this->N_point; i++) {
 			temp.insert(this->_signed, "0");
 		}
