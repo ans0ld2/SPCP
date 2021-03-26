@@ -111,8 +111,8 @@ public:
 		this->butAnalog.addCallBack([]() { Screens.JumpScreen(&sAnalogPl); });
 		this->butAnSet.addCallBack([]() { Screens.JumpScreen(&sSetAnalogPl); });
 
-		BusICurr.SetSigned(true);
-		BusIICurr.SetSigned(true);
+//		BusICurr.SetSigned(true);
+//		BusIICurr.SetSigned(true);
 		AB_Curr.SetSigned(true);
 	}
     void Loop(void) override {

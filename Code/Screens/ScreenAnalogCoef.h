@@ -81,8 +81,8 @@ public:
 			this->_write(30, *this->dCoef[5].GetPValue());
 		});
 		this->dValue[0].SetSigned(true);
-		this->dValue[2].SetSigned(true);
-		this->dValue[5].SetSigned(true);
+//		this->dValue[2].SetSigned(true);
+//		this->dValue[5].SetSigned(true);
 	}
 };
 

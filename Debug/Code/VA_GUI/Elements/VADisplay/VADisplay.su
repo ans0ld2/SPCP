@@ -5,7 +5,7 @@ VADisplay.cpp:52:6:void VA::Display::SetMax(uint16_t)	0	static
 VADisplay.cpp:56:6:void VA::Display::SetMin(uint16_t)	0	static
 VADisplay.cpp:60:6:void VA::Display::SetNum_format(uint8_t, uint8_t)	0	static
 VADisplay.cpp:69:6:void VA::Display::SetValue(uint16_t)	0	static
-VADisplay.cpp:99:6:void VA::Display::SetPtr(uint16_t*)	0	static
+VADisplay.cpp:103:6:void VA::Display::SetPtr(uint16_t*)	0	static
 string_conversions.h:99:5:) [with _String = std::__cxx11::basic_string<char>; _CharT = char]	36	dynamic
-VADisplay.cpp:73:13:std::__cxx11::string VA::Display::ValueConvert(uint16_t)	80	static
+VADisplay.cpp:73:13:std::__cxx11::string VA::Display::ValueConvert(uint16_t)	64	static
 VADisplay.cpp:13:6:virtual void VA::Display::Show()	96	static

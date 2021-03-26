@@ -72,25 +72,29 @@ void Display::SetValue(uint16_t pvalue) {
 
 std::string Display::ValueConvert(uint16_t value) {
 	std::string temp;
+
+	int16_t _value = *(int16_t*)&value;
+		temp = std::to_string(abs(_value));
+	for(int i = 0; temp.length()  <= this->N_point; i++) {
+		temp.insert(this->_signed, "0");
+	}
+	if(this->N_point > 0) {
+		temp.insert(temp.length() - this->N_point, ".");
+	}
 	if(this->_signed) {
-		int16_t _value = *(int16_t*)&value;
-			temp = std::to_string(abs(_value));
-		for(int i = 0; temp.length()  <= this->N_point; i++) {
-			temp.insert(this->_signed, "0");
-		}
-		if(this->N_point > 0) {
-			temp.insert(temp.length() - this->N_point, ".");
+		if(value & 8000){
+			temp.insert(0, "-");
 		}
 	}
-	else {
-		temp = std::to_string(value);
-		for(int i = 0; temp.length() <= this->N_point; i++) {
-			temp.insert(0, "0");
-		}
-		if(this->N_point > 0) {
-			temp.insert(temp.length() - this->N_point, ".");
-		}
-	}
+//	else {
+//		temp = std::to_string(value);
+//		for(int i = 0; temp.length() <= this->N_point; i++) {
+//			temp.insert(0, "0");
+//		}
+//		if(this->N_point > 0) {
+//			temp.insert(temp.length() - this->N_point, ".");
+//		}
+//	}
 
 
 	return temp;
