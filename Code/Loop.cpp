@@ -135,6 +135,9 @@ void Setup(void) {
 void LoopTask(void *argument) {
 
 	while(true) {
+
+
+
 		Memory[rMemory::VoltageB118].U = sZVU.OutputVoltage;
 		Memory[rMemory::CurrentB118].U = sZVU.OutputCurrent;
 		Memory[rMemory::Crash].U = !Global.indCrash.state;
@@ -482,14 +485,18 @@ void ShowDefault(void *argument) {
 
 	while(true) {
 		osDelay(5);
+
+//		if (Screens.GetSleep()){ Screens.JumpScreen((int)0);}
 		Screens.Touched();
 		Screens.Global.Loop();
+
 
 		if(Screens.GetPtrCurrentScreen() != &sZVU) {
 			sZVU.Loop();
 		}
 		Screens.ShowScreen();
 		HAL_IWDG_Refresh(&hiwdg);
+
 	}
 }
 
@@ -510,6 +517,7 @@ void EraseEvent(void) {
 
 void SleepTFT(void *argument) {
 	Screens.Sleep();
+	//Screens.SleepShowScreen();
 }
 
 void VA_UART_TxCpltCallback(UART_HandleTypeDef *huart) {

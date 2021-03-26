@@ -33,6 +33,7 @@ class GUI {
 	uint16_t backLight = 100;
 	uint32_t timeOut = 1000;
 	uint16_t currentScreen = 0;
+	static uint16_t CurrentLayer;
 
 	LevelsAcces levelAcces = LevelsAcces::None;
 
@@ -52,6 +53,7 @@ public:
 
 	void Init(void);
 	void ShowScreen(void);
+	void SleepShowScreen();
 	void Touched(void);
 
 	void JumpScreen(uint16_t index);
@@ -65,6 +67,7 @@ public:
 	uint16_t GetMinutes(void);
 	uint16_t GetSeconds(void);
 	std::string GetTime(void);
+	bool GetSleep(void);
 	void SetHours(uint8_t Hours);
 	void SetMinutes(uint8_t Minutes);
 	void SetSeconds(uint8_t Seconds);

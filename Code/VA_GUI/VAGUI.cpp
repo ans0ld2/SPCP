@@ -9,6 +9,8 @@
 
 namespace VA {
 
+uint16_t GUI::CurrentLayer = RA8875Layers::LAYER1;
+
 GUI::GUI(uint16_t startScreen = 1) {
 	this->startScreen = startScreen;
 }
@@ -31,8 +33,6 @@ void GUI::Init() {
 
 void GUI::ShowScreen() {
 
-	static uint16_t CurrentLayer = RA8875Layers::LAYER1;
-
 	if(this->sleep == false) {
 		this->tft.writeTo((RA8875Layers)CurrentLayer);
 		this->tft.fillScreen(0xB5B6);
@@ -53,6 +53,31 @@ void GUI::ShowScreen() {
 		++CurrentLayer %= RA8875Layers::LAYER_END;
 	}
 }
+
+void GUI::SleepShowScreen() {
+	this->JumpScreen((int)0);
+	for (uint8_t i = 0; i < 3; i++){
+		this->tft.writeTo((RA8875Layers)CurrentLayer);
+		this->tft.fillScreen(0xB5B6);
+		for(uint8_t n = 0; n < 2; n++) {
+			uint16_t index = n*this->currentScreen;
+			uint16_t end = this->Screens[index]->Elements.size();
+			for(uint16_t i = 0; i < end; i++) {
+				if (this->Screens[index]->Elements[i]->isShowed()) {
+					this->Screens[index]->Elements[i]->Show();
+				}
+			}
+			if(this->currentScreen == 0) break;
+		}
+
+		this->tft.layerEffect((RA8875Layers)CurrentLayer);
+
+		++CurrentLayer %= RA8875Layers::LAYER_END;
+		osDelay(2);
+	}
+
+}
+
 
 void GUI::Touched(void) {
 	uint16_t x = 0, y = 0;
@@ -87,6 +112,7 @@ void GUI::Touched(void) {
 		}
 	}
 	else if(tstate == true) {
+		this->SleepShowScreen();
 		this->Wakeup();
 	}
 	if(tstate == false && this->sleep == false && osTimerIsRunning(sleepTimerHandle) == 0) {
@@ -128,6 +154,7 @@ void GUI::Sleep(void) {
 }
 
 void GUI::Wakeup(void) {
+
 	this->SetBackLight(this->backLight);
 	this->sleep = false;
 }
@@ -242,6 +269,10 @@ void GUI::CloseLevelAcces(void) {
 
 LevelsAcces GUI::GetLevelAcces(void) {
 	return this->levelAcces;
+}
+
+bool GUI::GetSleep() {
+	return this->sleep;
 }
 
 } /* namespace VA */

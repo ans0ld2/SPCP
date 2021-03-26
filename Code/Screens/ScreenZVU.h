@@ -57,8 +57,6 @@ class ScreenZVU : public BaseScreen {
 				this->Close();
 			});
 		}
-
-
 	} Pusk;
 public:
 

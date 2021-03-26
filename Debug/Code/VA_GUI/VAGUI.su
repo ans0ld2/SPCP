@@ -8,33 +8,35 @@ std_function.h:314:7:) [with _Functor = WindowInsufficientLavelAccess::WindowIns
 std_function.h:212:2:static bool std::_Function_base::_Base_manager<_Functor>::_M_manager(std::_Any_data&, const std::_Any_data&, std::_Manager_operation) [with _Functor = WindowInsufficientLavelAccess::WindowInsufficientLavelAccess(VA::GUI*)::<lambda()>]	0	static
 string_conversions.h:99:5:) [with _String = std::__cxx11::basic_string<char>; _CharT = char]	52	dynamic
 VALabel.h:27:7:VA::Label::~Label()	16	static
-VAGUI.cpp:16:6:void VA::GUI::Init()	16	static
-VAGUI.cpp:32:6:void VA::GUI::ShowScreen()	32	static
-VAGUI.cpp:57:6:void VA::GUI::Touched()	48	static
-VAGUI.cpp:100:6:void VA::GUI::JumpScreen(uint16_t)	16	static
-VAGUI.cpp:110:6:void VA::GUI::JumpScreen(VA::BaseScreen*)	24	static
-VAGUI.cpp:116:6:void VA::GUI::SetBackLight(uint8_t)	16	static
-VAGUI.cpp:120:6:void VA::GUI::SetTimeOut(uint8_t)	0	static
-VAGUI.cpp:124:6:void VA::GUI::Sleep()	8	static
-VAGUI.cpp:130:6:void VA::GUI::Wakeup()	16	static
-VAGUI.cpp:138:10:uint16_t VA::GUI::GetHours()	8	static
-VAGUI.cpp:142:10:uint16_t VA::GUI::GetMinutes()	8	static
-VAGUI.cpp:146:10:uint16_t VA::GUI::GetSeconds()	8	static
-VAGUI.cpp:150:13:std::__cxx11::string VA::GUI::GetTime()	184	static
-VAGUI.cpp:160:6:void VA::GUI::SetHours(uint8_t)	16	static
-VAGUI.cpp:167:6:void VA::GUI::SetMinutes(uint8_t)	16	static
-VAGUI.cpp:174:6:void VA::GUI::SetSeconds(uint8_t)	16	static
-VAGUI.cpp:182:10:uint16_t VA::GUI::GetYear()	8	static
-VAGUI.cpp:186:10:uint16_t VA::GUI::GetMonth()	8	static
-VAGUI.cpp:190:10:uint16_t VA::GUI::GetDay()	8	static
-VAGUI.cpp:194:13:std::__cxx11::string VA::GUI::GetDate()	184	static
-VAGUI.cpp:203:6:void VA::GUI::SetYear(uint16_t)	16	static
-VAGUI.cpp:210:6:void VA::GUI::SetMonth(uint8_t)	16	static
-VAGUI.cpp:217:6:void VA::GUI::SetDay(uint8_t)	16	static
-VAGUI.cpp:225:6:bool VA::GUI::OpenLevelAcces(uint16_t)	0	static
-VAGUI.cpp:239:6:void VA::GUI::CloseLevelAcces()	0	static
-VAGUI.cpp:243:13:VA::LevelsAcces VA::GUI::GetLevelAcces()	0	static
+VAGUI.cpp:18:6:void VA::GUI::Init()	16	static
+VAGUI.cpp:34:6:void VA::GUI::ShowScreen()	32	static
+VAGUI.cpp:57:6:void VA::GUI::SleepShowScreen()	32	static
+VAGUI.cpp:82:6:void VA::GUI::Touched()	48	static
+VAGUI.cpp:126:6:void VA::GUI::JumpScreen(uint16_t)	16	static
+VAGUI.cpp:136:6:void VA::GUI::JumpScreen(VA::BaseScreen*)	24	static
+VAGUI.cpp:142:6:void VA::GUI::SetBackLight(uint8_t)	16	static
+VAGUI.cpp:146:6:void VA::GUI::SetTimeOut(uint8_t)	0	static
+VAGUI.cpp:150:6:void VA::GUI::Sleep()	8	static
+VAGUI.cpp:156:6:void VA::GUI::Wakeup()	16	static
+VAGUI.cpp:165:10:uint16_t VA::GUI::GetHours()	8	static
+VAGUI.cpp:169:10:uint16_t VA::GUI::GetMinutes()	8	static
+VAGUI.cpp:173:10:uint16_t VA::GUI::GetSeconds()	8	static
+VAGUI.cpp:177:13:std::__cxx11::string VA::GUI::GetTime()	184	static
+VAGUI.cpp:187:6:void VA::GUI::SetHours(uint8_t)	16	static
+VAGUI.cpp:194:6:void VA::GUI::SetMinutes(uint8_t)	16	static
+VAGUI.cpp:201:6:void VA::GUI::SetSeconds(uint8_t)	16	static
+VAGUI.cpp:209:10:uint16_t VA::GUI::GetYear()	8	static
+VAGUI.cpp:213:10:uint16_t VA::GUI::GetMonth()	8	static
+VAGUI.cpp:217:10:uint16_t VA::GUI::GetDay()	8	static
+VAGUI.cpp:221:13:std::__cxx11::string VA::GUI::GetDate()	184	static
+VAGUI.cpp:230:6:void VA::GUI::SetYear(uint16_t)	16	static
+VAGUI.cpp:237:6:void VA::GUI::SetMonth(uint8_t)	16	static
+VAGUI.cpp:244:6:void VA::GUI::SetDay(uint8_t)	16	static
+VAGUI.cpp:252:6:bool VA::GUI::OpenLevelAcces(uint16_t)	0	static
+VAGUI.cpp:266:6:void VA::GUI::CloseLevelAcces()	0	static
+VAGUI.cpp:270:13:VA::LevelsAcces VA::GUI::GetLevelAcces()	0	static
+VAGUI.cpp:274:6:bool VA::GUI::GetSleep()	0	static
 stl_vector.h:433:7:std::vector<_Tp, _Alloc>::~vector() [with _Tp = std::function<void()>; _Alloc = std::allocator<std::function<void()> >]	16	static
 vector.tcc:394:7:) [with _Args = {std::function<void()>}; _Tp = std::function<void()>; _Alloc = std::allocator<std::function<void()> >]	48	static
 WindowInsufficientLavelAccess.h:29:2:WindowInsufficientLavelAccess::WindowInsufficientLavelAccess(VA::GUI*)	200	static
-VAGUI.cpp:12:1:VA::GUI::GUI(uint16_t)	40	static
+VAGUI.cpp:14:1:VA::GUI::GUI(uint16_t)	40	static
