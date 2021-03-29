@@ -15,5 +15,5 @@ VA_Modbus.cpp:274:6:bool VA::Modbus::SetBaudRate(uint32_t)	8	static
 VA_Modbus.cpp:280:6:bool VA::Modbus::SetParity(VA::UART_Parity)	8	static
 VA_Modbus.cpp:297:6:void VA::Modbus::ReadOn()	0	static
 VA_Modbus.cpp:304:6:void VA::Modbus::UART_IDLECallback(UART_HandleTypeDef*)	32	static
-VA_Modbus.cpp:365:6:void VA::Modbus::Modbus_TxCpltCallback(UART_HandleTypeDef*)	8	static
-VA_Modbus.cpp:373:6:void VA::Modbus::Modbus_IRQHandler(UART_HandleTypeDef*)	32	static
+VA_Modbus.cpp:366:6:void VA::Modbus::Modbus_TxCpltCallback(UART_HandleTypeDef*)	8	static
+VA_Modbus.cpp:374:6:void VA::Modbus::Modbus_IRQHandler(UART_HandleTypeDef*)	32	static

@@ -340,7 +340,8 @@ void Modbus::UART_IDLECallback(UART_HandleTypeDef *huart) {
 	}
 	else if(this->Regime == ModbusRegime::Master) {
 		if(this->BufRx[0] == this->BufTx[0]) {
-			if(this->crc_calc(this->BufRx, this->data_length) == 0 || this->BufRx[0] == 101) {
+
+			if(this->crc_calc(this->BufRx, this->BufRx[1] == ModbusFunction::Read_Holding_Registers ? this->NReg * 2 + 5 : 8) == 0) {
 
 				switch(this->BufRx[1]) {
 				case ModbusFunction::Read_Holding_Registers:
@@ -364,9 +365,9 @@ void Modbus::UART_IDLECallback(UART_HandleTypeDef *huart) {
 
 void Modbus::Modbus_TxCpltCallback(UART_HandleTypeDef *huart) {
 	if(huart == this->huart) {
-		//if(this->Interface == ModbusInterface::RS485)
-			HAL_GPIO_WritePin(this->Dir_Port, this->Dir_Pin, this->Dir_Rx);
 		HAL_UART_Receive_DMA(this->huart, this->BufRx, ModbusConfig::N_Byte_Reseive);
+		if(this->Interface == ModbusInterface::RS485)
+			HAL_GPIO_WritePin(this->Dir_Port, this->Dir_Pin, this->Dir_Rx);
 	}
 }
 

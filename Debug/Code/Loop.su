@@ -111,6 +111,7 @@ std_function.h:212:2:static bool std::_Function_base::_Base_manager<_Functor>::_
 std_function.h:212:2:static bool std::_Function_base::_Base_manager<_Functor>::_M_manager(std::_Any_data&, const std::_Any_data&, std::_Manager_operation) [with _Functor = ScreenAnalogPl::ScreenAnalogPl()::<lambda()>]	0	static
 std_function.h:212:2:static bool std::_Function_base::_Base_manager<_Functor>::_M_manager(std::_Any_data&, const std::_Any_data&, std::_Manager_operation) [with _Functor = ScreenAnalogPl::ScreenAnalogPl()::<lambda()>]	0	static
 std_function.h:212:2:static bool std::_Function_base::_Base_manager<_Functor>::_M_manager(std::_Any_data&, const std::_Any_data&, std::_Manager_operation) [with _Functor = ScreenAnalogPl::ScreenAnalogPl()::<lambda()>]	0	static
+std_function.h:212:2:static bool std::_Function_base::_Base_manager<_Functor>::_M_manager(std::_Any_data&, const std::_Any_data&, std::_Manager_operation) [with _Functor = ScreenAnalogPl::ScreenAnalogPl()::<lambda()>]	0	static
 std_function.h:212:2:static bool std::_Function_base::_Base_manager<_Functor>::_M_manager(std::_Any_data&, const std::_Any_data&, std::_Manager_operation) [with _Functor = ScreenMain::ScreenMain()::<lambda()>]	0	static
 std_function.h:212:2:static bool std::_Function_base::_Base_manager<_Functor>::_M_manager(std::_Any_data&, const std::_Any_data&, std::_Manager_operation) [with _Functor = ScreenMain::ScreenMain()::<lambda()>]	0	static
 std_function.h:314:7:) [with _Functor = ScreenContrlInsulation::ScreenContrlInsulation()::<lambda()>; _ArgTypes = {}]	0	static
@@ -180,6 +181,7 @@ std_function.h:314:7:) [with _Functor = ScreenSetTime::ScreenSetTime()::<lambda(
 std_function.h:314:7:) [with _Functor = ScreenBattery::ScreenBattery()::<lambda()>; _ArgTypes = {}]	8	static
 std_function.h:314:7:) [with _Functor = ScreenAutorization::ScreenAutorization()::<lambda()>; _ArgTypes = {}]	0	static
 std_function.h:314:7:) [with _Functor = ScreenZVU::ScreenZVU()::<lambda()>; _ArgTypes = {}]	0	static
+std_function.h:314:7:) [with _Functor = ScreenAnalogPl::ScreenAnalogPl()::<lambda()>; _ArgTypes = {}]	0	static
 ScreenEvents.h:326:7:virtual bool ScreenEvents::JumpFrom()	8	static
 std_function.h:314:7:) [with _Functor = ScreenEvents::ScreenEvents()::<lambda()>; _ArgTypes = {}]	8	static
 std_function.h:314:7:) [with _Functor = ScreenAutorization::ScreenAutorization()::<lambda()>; _ArgTypes = {}]	0	static
@@ -223,8 +225,8 @@ std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda(
 std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda()>; _ArgTypes = {}]	32	static
 std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda()>; _ArgTypes = {}]	32	static
 std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda()>; _ArgTypes = {}]	32	static
-std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda()>; _ArgTypes = {}]	32	static
 std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda()>; _ArgTypes = {}]	88	static
+std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda()>; _ArgTypes = {}]	32	static
 std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda()>; _ArgTypes = {}]	32	static
 std_function.h:314:7:) [with _Functor = ScreenSettZVU::ScreenSettZVU()::<lambda()>; _ArgTypes = {}]	88	static
 VALabel.h:27:7:VA::Label::~Label()	16	static
@@ -245,14 +247,14 @@ std_function.h:314:7:) [with _Functor = ScreenGlobal::ScreenGlobal()::<lambda()>
 ScreenGlobal.h:98:29:static void ScreenGlobal::ScreenGlobal()::<lambda()>::_FUN()	8	static
 Loop.cpp:77:6:void Setup()	72	static
 Loop.cpp:135:6:void LoopTask(void*)	80	static,ignoring_inline_asm
-Loop.cpp:403:6:void ExchangeTask(void*)	104	static
-Loop.cpp:479:6:void write(WriteBuf_t)	24	static
-Loop.cpp:484:6:void ShowDefault(void*)	80	static
-Loop.cpp:503:6:void EEPROMTask(void*)	16	static,ignoring_inline_asm
-Loop.cpp:513:6:void EraseEvent()	16	static
-Loop.cpp:518:6:void SleepTFT(void*)	0	static
-Loop.cpp:523:6:void VA_UART_TxCpltCallback(UART_HandleTypeDef*)	8	static
-Loop.cpp:528:6:void VA_USART_IRQHandler(UART_HandleTypeDef*)	8	static
+Loop.cpp:406:6:void ExchangeTask(void*)	104	static
+Loop.cpp:487:6:void write(WriteBuf_t)	24	static
+Loop.cpp:492:6:void ShowDefault(void*)	80	static
+Loop.cpp:510:6:void EEPROMTask(void*)	16	static,ignoring_inline_asm
+Loop.cpp:520:6:void EraseEvent()	16	static
+Loop.cpp:525:6:void SleepTFT(void*)	0	static
+Loop.cpp:530:6:void VA_UART_TxCpltCallback(UART_HandleTypeDef*)	8	static
+Loop.cpp:535:6:void VA_USART_IRQHandler(UART_HandleTypeDef*)	8	static
 stl_vector.h:433:7:std::vector<_Tp, _Alloc>::~vector() [with _Tp = std::function<void()>; _Alloc = std::allocator<std::function<void()> >]	16	static
 Graphics.h:42:1:VA::Graphics::Graphics(T, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, VA::Figure, uint16_t, bool) [with T = ScreenEvents*]	32	static
 VAButton.h:19:2:VA::Button::Button(T, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, std::__cxx11::string, uint16_t) [with T = VA::Canvas*]	104	static
@@ -310,7 +312,7 @@ ScreenMain.h:109:2:ScreenMain::ScreenMain()	216	static
 ScreenContrlInsulation.h:102:2:ScreenContrlInsulation::ScreenContrlInsulation()	176	static
 ScreenBKI.h:99:2:ScreenBKI::ScreenBKI()	176	static
 ScreenAnalogPl.h:34:3:ScreenAnalogPl::WindowZero::WindowZero()	160	static
-ScreenAnalogPl.h:58:2:ScreenAnalogPl::ScreenAnalogPl()	216	static
+ScreenAnalogPl.h:58:2:ScreenAnalogPl::ScreenAnalogPl()	232	static
 ScreenAnalogCoef.h:64:2:ScreenAnalogCoef::ScreenAnalogCoef()	176	static
 ScreenSetAnalogPl.h:74:2:ScreenSetAnalogPl::ScreenSetAnalogPl()	264	static
 ScreenSetBKI.h:49:2:ScreenSetBKI::ScreenSetBKI()	160	static
@@ -326,5 +328,5 @@ ScreenSettZVU.h:21:7:ScreenSettZVU::~ScreenSettZVU()	40	static
 ScreenZVU.h:22:7:ScreenZVU::~ScreenZVU()	40	static
 ScreenEvents.h:62:7:ScreenEvents::~ScreenEvents()	40	static
 VAGUI.h:25:7:VA::GUI::~GUI()	32	static
-Loop.cpp:531:1:cpp)	24	static
-Loop.cpp:531:1:cpp)	40	static
+Loop.cpp:538:1:cpp)	24	static
+Loop.cpp:538:1:cpp)	40	static

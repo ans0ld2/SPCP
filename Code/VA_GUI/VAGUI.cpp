@@ -151,6 +151,7 @@ void GUI::Sleep(void) {
 	this->tft.PWM1out(0);
 	this->sleep = true;
 	this->CloseLevelAcces();
+	this->SleepShowScreen();
 }
 
 void GUI::Wakeup(void) {

@@ -51,12 +51,12 @@ class Modbus {
 
 	};
 
+public:
 	uint8_t Adress;
 	UART_HandleTypeDef* huart;
 	uint16_t* Memory;
 	uint8_t BufRx[ModbusConfig::N_Byte_Reseive];
 	uint8_t BufTx[ModbusConfig::N_Byte_Reseive];
-	uint8_t data_length;
 	uint16_t NRegMax;
 
 	ModbusInterface Interface;
@@ -88,6 +88,7 @@ class Modbus {
 	void ReadOn(void);
 
 public:
+	uint8_t data_length;
 	Modbus(void) {};
 	Modbus(ModbusInitStruct* InitStruct, ModbusRegime Regime, TIM_HandleTypeDef* htim = nullptr);
 	~Modbus(void) {};

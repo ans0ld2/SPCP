@@ -107,7 +107,7 @@ void Setup(void) {
 	ModbusInit.Dir_Port		= DIR4_GPIO_Port;
 	ModbusInit.Dir_Pin		= DIR4_Pin;
 	ModbusInit.Dir_Polarity = VA_MODBUS_POLARITY_LOW;
-	ModbusInit.WaitSlave	= 300;
+	ModbusInit.WaitSlave	= 500;
 	ModbusInit.CountRepeat	= 3;
 	Modbus1.Init(&ModbusInit, ModbusRegime::Slave, &htim7);
 	Modbus1.SetBaudRate(Memory[eMemory::BaudRateCOM1].U*100);
@@ -178,12 +178,12 @@ void LoopTask(void *argument) {
 
 		// --------------------- Задержка на измерение БКИ ----------------
 		if(HAL_GPIO_ReadPin(IN2_GPIO_Port, IN2_Pin)){
-			osTimerStart(insulTimerHandle, 30000);
+			osTimerStart(insulTimerHandle, 30000); 	// зарержка после снятия сигнала ручного измерения
 		}
 
 		if((osTimerIsRunning(insulTimerHandle) == 1) || HAL_GPIO_ReadPin(IN2_GPIO_Port, IN2_Pin)){
 			BKI.Enable = false;
-			osTimerStart(handMeasTIMHandle, 10000);
+			osTimerStart(handMeasTIMHandle, 10000); // задержка на вычитку данных из БКИ
 		}
 		else {
 			BKI.Enable = true;
@@ -192,14 +192,15 @@ void LoopTask(void *argument) {
 		if (exch) {
 			uint16_t* status = (uint16_t*)&AnalogBl.Mem.sAnalogIO;
 			if(((*status) & (1 << (0)) || (HAL_GPIO_ReadPin(OUT1_GPIO_Port, OUT1_Pin)))){
-				sCrash.addCrash(NumberCrash::CrashO1);
+				sCrash.addCrash(NumberCrash::CrashO1);  //Неисправность ШОТ
 				state = false;
 			}
 			else {
 				sCrash.delCrash(NumberCrash::CrashO1);
 			}
+
 			if((*status) & (1 << (1))){
-				sCrash.addCrash(NumberCrash::CrashO2);
+				sCrash.addCrash(NumberCrash::CrashO2); //Авария ШОТ
 				state = false;
 			}
 			else {
@@ -214,21 +215,23 @@ void LoopTask(void *argument) {
 	//		}
 
 			if((*status) & (1 << (4))){
-				sCrash.addCrash(NumberCrash::CrashO4);
+				sCrash.addCrash(NumberCrash::CrashO4); // Напряжение ECI не в норме
 				state = false;
 			}
 			else {
 				sCrash.delCrash(NumberCrash::CrashO4);
 			}
+
 			if((*status) & (1 << (5))){
-				sCrash.addCrash(NumberCrash::CrashO5);
+				sCrash.addCrash(NumberCrash::CrashO5); // Напряжение ECII не в норме
 				state = false;
 			}
 			else {
 				sCrash.delCrash(NumberCrash::CrashO5);
 			}
+
 			if((*status) & (1 << (6))){
-				sCrash.addCrash(NumberCrash::CrashO6);
+				sCrash.addCrash(NumberCrash::CrashO6); // Напряжение AБ не в норме
 				state = false;
 			}
 			else {
@@ -252,7 +255,7 @@ void LoopTask(void *argument) {
 	//			sCrash.delCrash(NumberCrash::CrashI1);
 	//		}
 			if((*status) & (1 << (9))){
-				sCrash.addCrash(NumberCrash::CrashI2);
+				sCrash.addCrash(NumberCrash::CrashI2);	// Авар. откл. выключателя ввода
 				state = false;
 			}
 			else sCrash.delCrash(NumberCrash::CrashI2);
@@ -264,25 +267,25 @@ void LoopTask(void *argument) {
 	//		else sCrash.delCrash(NumberCrash::CrashI3);
 
 			if((*status) & (1 << (11))){
-				sCrash.addCrash(NumberCrash::CrashI4);
+				sCrash.addCrash(NumberCrash::CrashI4);	// Авар. откл. выключателя линии и доп. цепей
 				state = false;
 			}
 			else sCrash.delCrash(NumberCrash::CrashI4);
 
 			if((*status) & (1 << (12))){
-				sCrash.addCrash(NumberCrash::CrashI5);
+				sCrash.addCrash(NumberCrash::CrashI5);	// Перегорание предохранителя в цепи АБ
 				state = false;
 			}
 			else sCrash.delCrash(NumberCrash::CrashI5);
 
 			if((*status) & (1 << (13))){
-				sCrash.addCrash(NumberCrash::CrashI6);
+				sCrash.addCrash(NumberCrash::CrashI6);	// Обрыв связи с АБ
 				state = false;
 			}
 			else sCrash.delCrash(NumberCrash::CrashI6);
 
 			if((*status) & (1 << (14))){
-				sCrash.addCrash(NumberCrash::CrashI7);
+				sCrash.addCrash(NumberCrash::CrashI7);	// Отсутствие напряжения на вводе
 				state = false;
 			}
 			else sCrash.delCrash(NumberCrash::CrashI7);
@@ -295,14 +298,14 @@ void LoopTask(void *argument) {
 					if((BKI.Mem.R1Minus < (Memory[eMemory::warnInsulation].U*10)
 							|| BKI.Mem.R1Plus < (Memory[eMemory::warnInsulation].U*10))
 							&& Memory[eMemory::warnInsulation].U != 0 ){
-						sCrash.addCrash(NumberCrash::WarnInsul);
+						sCrash.addCrash(NumberCrash::WarnInsul);		// Предупредительная авария БКИ ( Rиз < (Уставка) пред.)
 						state = false;
 						errWarn = true;
 					}
 					else sCrash.delCrash(NumberCrash::WarnInsul);
 
 					if(HAL_GPIO_ReadPin(IN1_GPIO_Port,IN1_Pin)) {
-						sCrash.addCrash(NumberCrash::CrashInsul);
+						sCrash.addCrash(NumberCrash::CrashInsul);		// Предупредительная авария БКИ ( Rиз < (Уставка))
 						state = false;
 						errWarn = true;
 					}
@@ -349,7 +352,7 @@ void LoopTask(void *argument) {
 				else sCrash.delCrash(NumberCrash::WarnAB);
 
 
-				uint16_t * status = (uint16_t *)&AnalogBl.Mem.sAnalogIO;
+				uint16_t *status = (uint16_t *)&AnalogBl.Mem.sAnalogIO;
 				WriteBuf_t temp;
 				temp.Adress = AnalogBl.Adress;
 				temp.AdrReg = 24;
@@ -390,8 +393,8 @@ void LoopTask(void *argument) {
 
 
 
-		HAL_GPIO_WritePin(OUT1_GPIO_Port, OUT1_Pin, errWarn ? GPIO_PIN_SET : GPIO_PIN_RESET);	//Предупредительная авария
-		HAL_GPIO_WritePin(OUT2_GPIO_Port, OUT2_Pin, errCon ? GPIO_PIN_RESET : GPIO_PIN_SET);	//Система управления не в норме
+		HAL_GPIO_WritePin(OUT1_GPIO_Port, OUT1_Pin, errWarn ? GPIO_PIN_SET : GPIO_PIN_RESET);	// Предупредительная авария
+		HAL_GPIO_WritePin(OUT2_GPIO_Port, OUT2_Pin, errCon ? GPIO_PIN_RESET : GPIO_PIN_SET);	// Система управления не в норме
 
 
 		taskYIELD();
@@ -428,6 +431,11 @@ void ExchangeTask(void *argument) {
 				if(BaseDevice::Devices[i]->ErrorConnection || !BaseDevice::Devices[i]->Enable) {
 					memset(BaseDevice::Devices[i]->Exchange[n].pBuff, 0, BaseDevice::Devices[i]->Exchange[n].NReg*2);
 				}
+//				if(BaseDevice::Devices[i] == &AnalogBl)
+//				{
+//					uint8_t num = BaseDevice::Devices[i]->Exchange[n].NReg*2 + 3;
+//					AnalogBl.Mem.AI11 = (uint16_t)(Modbus2.BufRx[num] << 8) | Modbus2.BufRx[num+1];
+//				}
 			}
 		}
 		exch = true;
@@ -486,7 +494,6 @@ void ShowDefault(void *argument) {
 	while(true) {
 		osDelay(5);
 
-//		if (Screens.GetSleep()){ Screens.JumpScreen((int)0);}
 		Screens.Touched();
 		Screens.Global.Loop();
 

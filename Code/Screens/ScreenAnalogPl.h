@@ -56,11 +56,9 @@ class ScreenAnalogPl : public BaseScreen {
 public:
 
 	ScreenAnalogPl(void) : BaseScreen(&Screens, "Аналоговая плата") {
-
-
-//		this->settZero.addCallBack([&]() {
-//			this->Zero.Open();
-//		});
+		this->settZero.addCallBack([&]() {
+			this->Zero.Open();
+		});
 		this->coeff.addCallBack([]() { Screens.JumpScreen(&sAnalogCoef); });
 		this->sett.addCallBack([]() { Screens.JumpScreen(&sSetAnalogPl); });
 		this->testIO.addCallBack([]() { Screens.JumpScreen(&sAnalogTestIO); });
