@@ -22,7 +22,7 @@ void EventInit(void) {
 	ListEvent[43] = "Авария O3";
 	ListEvent[44] = "Напряжение ECI не в норме";
 	ListEvent[45] = "Напряжение ECII не в норме";
-	ListEvent[46] = "Напряжение AБ не в норме";
+	ListEvent[46] = "Напряжение AБ ниже нормы";
 	ListEvent[47] = "Авария O7";
 
 	ListEvent[48] = "Отсутствие напряжения на вводе";

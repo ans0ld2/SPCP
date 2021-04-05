@@ -340,9 +340,9 @@ void Modbus::UART_IDLECallback(UART_HandleTypeDef *huart) {
 	}
 	else if(this->Regime == ModbusRegime::Master) {
 		if(this->BufRx[0] == this->BufTx[0]) {
-
 			if(this->crc_calc(this->BufRx, this->BufRx[1] == ModbusFunction::Read_Holding_Registers ? this->NReg * 2 + 5 : 8) == 0) {
-
+			//if(this->crc_calc(this->BufRx, this->data_length) == 0 || this->BufRx[0] == 101) {
+			//if(this->crc_calc(this->BufRx, this->data_length) == 0){ // || this->BufRx[0] == 101) {
 				switch(this->BufRx[1]) {
 				case ModbusFunction::Read_Holding_Registers:
 					for(uint16_t i = 0; i < this->NReg; i++) {
