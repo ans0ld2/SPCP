@@ -1,8 +1,0 @@
-freertos.c:282:13:SleepTFT	0	static
-freertos.c:216:13:ShowDefault	8	static
-freertos.c:298:13:handMeasDelay	0	static
-freertos.c:290:13:InsulDelay	0	static
-freertos.c:270:13:EEPROMTask	8	static
-freertos.c:234:13:LoopTask	8	static
-freertos.c:252:13:ExchangeTask	8	static
-freertos.c:148:6:MX_FREERTOS_Init	8	static

@@ -1,6 +1,0 @@
-VABaseElement.h:81:15:virtual void VA::BaseElement::Show()	0	static
-VACanvas.cpp:25:6:virtual void VA::Canvas::Close()	0	static
-VACanvas.cpp:29:6:virtual void VA::Canvas::Open()	0	static
-VACanvas.cpp:21:6:void VA::Canvas::delElement(VA::BaseElement*)	12	static
-vector.tcc:394:7:) [with _Args = {VA::BaseElement* const&}; _Tp = VA::BaseElement*; _Alloc = std::allocator<VA::BaseElement*>]	48	static
-VACanvas.cpp:14:6:void VA::Canvas::addElement(VA::BaseElement*)	16	static

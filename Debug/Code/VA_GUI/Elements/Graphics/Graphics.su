@@ -1,2 +1,0 @@
-Graphics.cpp:16:6:virtual void VA::Graphics::Show()	48	static
-Graphics.cpp:13:1:VA::Graphics::Graphics()	8	static

@@ -1,4 +1,0 @@
-VABaseScreen.h:46:15:virtual bool VA::BaseScreen::JumpFrom()	0	static
-ScreenContrlInsulation.h:119:7:virtual void ScreenContrlInsulation::JumpTo()	0	static
-string_conversions.h:99:5:) [with _String = std::__cxx11::basic_string<char>; _CharT = char]	52	dynamic
-ScreenConrlInsulation.cpp:15:6:virtual void ScreenContrlInsulation::Loop()	120	static

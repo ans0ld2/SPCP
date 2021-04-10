@@ -1,9 +1,0 @@
-VA_EEPROM_AT25640.cpp:13:1:VA::EEPROM_AT25640::EEPROM_AT25640(SPI_HandleTypeDef*, uint16_t*, GPIO_TypeDef*, uint16_t, VA::EEPROM_Polarity)	12	static
-VA_EEPROM_AT25640.cpp:21:6:void VA::EEPROM_AT25640::Select()	8	static
-VA_EEPROM_AT25640.cpp:26:6:void VA::EEPROM_AT25640::DeSelect()	0	static
-VA_EEPROM_AT25640.cpp:30:6:void VA::EEPROM_AT25640::WriteEnable()	24	static
-VA_EEPROM_AT25640.cpp:39:6:void VA::EEPROM_AT25640::Write(uint16_t*)	24	static
-VA_EEPROM_AT25640.cpp:46:9:uint8_t VA::EEPROM_AT25640::GetStatus()	24	static
-VA_EEPROM_AT25640.cpp:59:6:void VA::EEPROM_AT25640::Reads(uint16_t, uint16_t)	40	static
-VA_EEPROM_AT25640.cpp:78:6:void VA::EEPROM_AT25640::Writes(uint16_t, uint16_t, uint16_t*)	48	static
-VA_EEPROM_AT25640.cpp:90:6:void VA::EEPROM_AT25640::Update()	40	static
