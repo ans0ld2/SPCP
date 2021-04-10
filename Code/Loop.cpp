@@ -136,11 +136,22 @@ void LoopTask(void *argument) {
 
 	while(true) {
 
-
-
 		Memory[rMemory::VoltageB118].U = sZVU.OutputVoltage;
 		Memory[rMemory::CurrentB118].U = sZVU.OutputCurrent;
 		Memory[rMemory::Crash].U = !Global.indCrash.state;
+
+		Memory[rMemory::Analog1AI1].U = AnalogBl.Mem.AI1;
+		Memory[rMemory::Analog1AI2].U = AnalogBl.Mem.AI2;
+		Memory[rMemory::Analog1AI3].U = AnalogBl.Mem.AI3;
+		Memory[rMemory::Analog1AI11].U = AnalogBl.Mem.AI11;
+		Memory[rMemory::Analog1AI12].U = AnalogBl.Mem.AI12;
+		Memory[rMemory::Analog1AI13].U = AnalogBl.Mem.AI13;
+		Memory[rMemory::Analog1Umax1].U = AnalogBl.Mem.Umax1;
+		Memory[rMemory::Analog1Umax2].U = AnalogBl.Mem.Umax2;
+		Memory[rMemory::Analog1Umin1].U = AnalogBl.Mem.Umin1;
+		Memory[rMemory::Analog1Umin2].U = AnalogBl.Mem.Umin2;
+		Memory[rMemory::Analog1Umin3].U = AnalogBl.Mem.Umin3;
+
 		sBatteryControl.Max = Memory[eMemory::N_SectionDCXJ].U;
 
 		bool state = true;		// состояние индикатора на глобале
@@ -431,6 +442,7 @@ void ExchangeTask(void *argument) {
 				if(BaseDevice::Devices[i]->ErrorConnection || !BaseDevice::Devices[i]->Enable) {
 					memset(BaseDevice::Devices[i]->Exchange[n].pBuff, 0, BaseDevice::Devices[i]->Exchange[n].NReg*2);
 				}
+// ----------- Проверка Модбас аналоговой платы -------------------------------------------//
 //				if(BaseDevice::Devices[i] == &AnalogBl)
 //				{
 //					uint8_t num = BaseDevice::Devices[i]->Exchange[n].NReg*2 + 3;
