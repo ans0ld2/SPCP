@@ -32,8 +32,16 @@ void GUI::Init() {
 }
 
 void GUI::ShowScreen() {
+	static bool last_sleep = false;
 
-	if(this->sleep == false) {
+	if(last_sleep == false) {
+	
+		if(this->sleep == true)
+		{
+			this->tft.PWM1out(0);
+			this->CloseLevelAcces();
+			this->JumpScreen((int)0);
+		}
 		this->tft.writeTo((RA8875Layers)CurrentLayer);
 		this->tft.fillScreen(0xB5B6);
 
@@ -52,38 +60,18 @@ void GUI::ShowScreen() {
 
 		++CurrentLayer %= RA8875Layers::LAYER_END;
 	}
+	
+	last_sleep = this->sleep;
 }
-
-void GUI::SleepShowScreen() {
-	this->JumpScreen((int)0);
-	for (uint8_t i = 0; i < 3; i++){
-		this->tft.writeTo((RA8875Layers)CurrentLayer);
-		this->tft.fillScreen(0xB5B6);
-		for(uint8_t n = 0; n < 2; n++) {
-			uint16_t index = n*this->currentScreen;
-			uint16_t end = this->Screens[index]->Elements.size();
-			for(uint16_t i = 0; i < end; i++) {
-				if (this->Screens[index]->Elements[i]->isShowed()) {
-					this->Screens[index]->Elements[i]->Show();
-				}
-			}
-			if(this->currentScreen == 0) break;
-		}
-
-		this->tft.layerEffect((RA8875Layers)CurrentLayer);
-
-		++CurrentLayer %= RA8875Layers::LAYER_END;
-		osDelay(2);
-	}
-
-}
-
 
 void GUI::Touched(void) {
 	uint16_t x = 0, y = 0;
+	static bool last_sleep = false;
 	static bool accessState = false;
 	bool tstate = this->tft.touched();
-	if(this->sleep == false) {
+
+	if(last_sleep == false) {
+
 		this->tft.touchRead(x, y);
 
 		x = this->tft.width() - (x - 80)*this->tft.width()/(965-80);
@@ -112,7 +100,6 @@ void GUI::Touched(void) {
 		}
 	}
 	else if(tstate == true) {
-		this->SleepShowScreen();
 		this->Wakeup();
 	}
 	if(tstate == false && this->sleep == false && osTimerIsRunning(sleepTimerHandle) == 0) {
@@ -120,6 +107,11 @@ void GUI::Touched(void) {
 	}
 	if(tstate == true && this->sleep == false && osTimerIsRunning(sleepTimerHandle) == 1) {
 		osTimerStop(sleepTimerHandle);
+	}
+
+	if(this->sleep == true || (this->sleep == false && tstate == false))
+	{
+		last_sleep = this->sleep;
 	}
 }
 
@@ -148,10 +140,10 @@ void GUI::SetTimeOut(uint8_t Min) {
 }
 
 void GUI::Sleep(void) {
-	this->tft.PWM1out(0);
+//	this->tft.PWM1out(0);
 	this->sleep = true;
-	this->CloseLevelAcces();
-	this->SleepShowScreen();
+//	this->CloseLevelAcces();
+//	this->SleepShowScreen();
 }
 
 void GUI::Wakeup(void) {

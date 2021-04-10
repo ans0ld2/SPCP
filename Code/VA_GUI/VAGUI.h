@@ -53,7 +53,6 @@ public:
 
 	void Init(void);
 	void ShowScreen(void);
-	void SleepShowScreen();
 	void Touched(void);
 
 	void JumpScreen(uint16_t index);
