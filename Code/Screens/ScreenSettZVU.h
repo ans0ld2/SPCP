@@ -9,9 +9,11 @@
 
 #include "ScreenZVU.h"
 #include "Loop.h"
-//#include "DeviceB118.h";
+#include "DeviceB118.h"
 
 using namespace VA;
+
+extern DeviceB118 B118[2];
 
 #define min 0
 #define max 3000
@@ -26,13 +28,13 @@ class ScreenSettZVU : public BaseScreen {
 		temp.Value = Val;
 		if(this->chosenDevise == 0) {
 			if(Memory[eMemory::RegimeB118].U == Regime) {
-				temp.Adress = 7;
+				temp.Adress = B118[0].Adress;
 				write(temp);
 			}
 		}
 		else {
 			if(Memory[eMemory::RegimeB118M].U == Regime) {
-				temp.Adress = 8;
+				temp.Adress = B118[1].Adress;
 				write(temp);
 			}
 		}

@@ -78,15 +78,16 @@ void Setup(void) {
 
 	eeprom.Reads(0, rMemory::StartAdress);
 
-	if(Memory[0].U != 0x112 || Memory[3].U != 0x163) {
+	if(Memory[0].U != 0x112 || Memory[3].U != 0x164) {
 		uint16_t Buf1[] = { 55, 5, 0, 0, 192, 0, 100, 96, 1, 100 };
-		uint16_t Buf2[] = { 0, 2600, 2310, 1900, 1050, 1000, 100, 2800, 2420, 2000, 1050, 1000, 100 };
+		uint16_t Buf2[] = { 0, 2600, 2310, 1900, 1050, 1000, 100, 2800, 2420, 2000, 1050, 1000, 100,
+		                    0, 2600, 2310, 1900, 1050, 1000, 100, 2800, 2420, 2000, 1050, 1000, 100};
 
 		eeprom.Writes(10, sizeof(Buf1)/2, Buf1);
 		eeprom.Writes(100, sizeof(Buf2)/2, Buf2);
 
 		Memory[0].U = 0x112;
-		Memory[3].U = 0x163;
+		Memory[3].U = 0x164;
 		eeprom.Write(&Memory[0].U);
 		eeprom.Write(&Memory[3].U);
 

@@ -10,7 +10,7 @@ class ScreenAnalogTestIO : public BaseScreen {
 		WriteBuf_t temp;
 		temp.AdrReg = Reg;
 		temp.Value = Val;
-		temp.Adress = 101;
+		temp.Adress = AnalogBl.Adress;
 		write(temp);
 	}
 
