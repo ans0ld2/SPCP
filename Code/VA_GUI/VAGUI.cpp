@@ -35,7 +35,7 @@ void GUI::ShowScreen() {
 	static bool last_sleep = false;
 
 	if(last_sleep == false) {
-	
+
 		if(this->sleep == true)
 		{
 			this->tft.PWM1out(0);
@@ -70,33 +70,36 @@ void GUI::Touched(void) {
 	static bool accessState = false;
 	bool tstate = this->tft.touched();
 
-	if(last_sleep == false) {
+	if(sleep == false) {
 
 		this->tft.touchRead(x, y);
 
-		x = this->tft.width() - (x - 80)*this->tft.width()/(965-80);
-		y = this->tft.height() - (y - 80)*this->tft.height()/(915-80);
+		if(last_sleep == false) {
 
-		for(uint8_t n = 2; n > 0; n--) {
-			uint16_t index = (n-1)*this->currentScreen;
+			x = this->tft.width() - (x - 80)*this->tft.width()/(965-80);
+			y = this->tft.height() - (y - 80)*this->tft.height()/(915-80);
 
-			for(uint16_t i = this->Screens[index]->Elements.size(); i > 0; i--) {
-				if (this->Screens[index]->Elements[i-1]->isEnabled()) {
-					bool state = (this->Screens[index]->Elements[i-1]->CheckLevelAcces(this->levelAcces)) ? tstate : false;
-					if(this->Screens[index]->Elements[i-1]->Push(x, y, state)) {
-						x = -1;
-						if(tstate && !state) {
-							accessState = true;
+			for(uint8_t n = 2; n > 0; n--) {
+				uint16_t index = (n-1)*this->currentScreen;
+
+				for(uint16_t i = this->Screens[index]->Elements.size(); i > 0; i--) {
+					if (this->Screens[index]->Elements[i-1]->isEnabled()) {
+						bool state = (this->Screens[index]->Elements[i-1]->CheckLevelAcces(this->levelAcces)) ? tstate : false;
+						if(this->Screens[index]->Elements[i-1]->Push(x, y, state)) {
+							x = -1;
+							if(tstate && !state) {
+								accessState = true;
+							}
 						}
 					}
-				}
 
+				}
+				if (accessState && !tstate) {
+					this->InsufficientLavelAccess.Open();
+					accessState = false;
+				}
+				if(this->currentScreen == 0) return;
 			}
-			if (accessState && !tstate) {
-				this->InsufficientLavelAccess.Open();
-				accessState = false;
-			}
-			if(this->currentScreen == 0) return;
 		}
 	}
 	else if(tstate == true) {
