@@ -1,1 +1,3 @@
 /Debug/
+!./Debug/*.bin
+!./Debug/*.elf
