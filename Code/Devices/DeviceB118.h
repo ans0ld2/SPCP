@@ -57,9 +57,9 @@ public:
 		temp.pBuff = (uint16_t*)&this->Mem;
 		this->Exchange.push_back(temp);
 #ifdef CHINA
-		this->Name = "Блок B118-" + std::to_string(this->Adress - 6);
+		this->Name = "Блок Б118-" + std::to_string(this->Adress - 6);
 #else
-		this->Name = "Блок B130-" + std::to_string(this->Adress - 0);
+		this->Name = "Блок Б130-" + std::to_string(this->Adress - 0);
 #endif
 	}
 
