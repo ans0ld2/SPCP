@@ -88,7 +88,7 @@ std::string Display::ValueConvert(uint16_t value) {
 		temp.insert(temp.length() - this->N_point, ".");
 	}
 	if(this->_signed) {
-		if(value & 8000){
+		if(value & 0x8000){
 			temp.insert(0, "-");
 		}
 	}
